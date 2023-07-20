@@ -85,9 +85,10 @@ class World:
             ctx.line_to(point.x / self.width - 0.0075 + x_offset, point.y / self.height + 0.0075 + y_offset)
             ctx.stroke()
 
-        ctx.set_source_rgb(1, 0, 0)
         ctx.set_line_width(0.005)
-        for rectangle in self.rectangles:
+        for i in range(len(self.rectangles)):
+            rectangle = self.rectangles[i]
+            ctx.set_source_rgb(0.1 + (i / (len(self.rectangles) * (1 - 0.1))), 0, 0)
             ctx.move_to(rectangle.x / self.width + (x_offset - rectangle_spacing), rectangle.y / self.height + (y_offset - rectangle_spacing)) # Top left
             ctx.line_to((rectangle.x + rectangle.width - 1) / self.width + (x_offset + rectangle_spacing), rectangle.y / self.height + (y_offset - rectangle_spacing)) # ... to top right
             ctx.line_to((rectangle.x + rectangle.width - 1) / self.width + (x_offset + rectangle_spacing), (rectangle.y + rectangle.height - 1) / self.height + (y_offset + rectangle_spacing)) # ... to bottom right
