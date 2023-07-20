@@ -5,6 +5,7 @@ DEBUG_MERGING = False
 
 WIDTH = 12
 HEIGHT = 12
+RUN_COUNT = 100
 
 def rectangles_contain_bad_point(rectangle_a, rectangle_b, world):
     for bad_point in world.bad_points:
@@ -106,8 +107,8 @@ def print_debug_merging(i):
 
 best_world = None
 
-for run_count in range(100):
-    print(run_count)
+for run in range(RUN_COUNT):
+    print("Executing run " + str(run + 1) + " out of " + str(RUN_COUNT))
     bad_points = []
     for _ in range(10):
         bad_point = world.BadPoint(randint(0, WIDTH - 2) + 0.5, randint(0, HEIGHT - 2) + 0.5)
