@@ -3,8 +3,8 @@ from random import *
 
 DEBUG_MERGING = False
 
-WIDTH = 10
-HEIGHT = 10
+WIDTH = 12
+HEIGHT = 12
 
 def rectangles_contain_bad_point(rectangle_a, rectangle_b, world):
     for bad_point in world.bad_points:
@@ -106,9 +106,10 @@ def print_debug_merging(i):
 
 best_world = None
 
-for _ in range(100):
+for run_count in range(100):
+    print(run_count)
     bad_points = []
-    for _ in range(6):
+    for _ in range(10):
         bad_point = world.BadPoint(randint(0, WIDTH - 2) + 0.5, randint(0, HEIGHT - 2) + 0.5)
         while (bad_points_contains_point(bad_points, bad_point)):
             bad_point = world.BadPoint(randint(0, WIDTH - 2) + 0.5, randint(0, HEIGHT - 2) + 0.5)
