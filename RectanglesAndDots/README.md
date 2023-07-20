@@ -13,17 +13,5 @@ How do I find the minimum number of rectangles it would take to enclose all the 
 
 # Results
 ## First attempt at brute force
-```python
-for _ in range(2):
-    for i in range(len(example_world.rectangles)):
-        for j in range(len(example_world.rectangles)):
-            if i == j:
-                continue
-            if j >= len(example_world.rectangles):
-                break
-            if i >= len(example_world.rectangles):
-                break
-            if can_merge(example_world.rectangles[i], example_world.rectangles[j], example_world):
-                merge(example_world.rectangles[i], example_world.rectangles[j], example_world)
-```
-This algorithm gave me this terrible solution ![img_1.png](img_1.png)
+Install dependencies with `pip3 install -r requirements.txt`
+Run `python3 demo.py`
