@@ -6,6 +6,8 @@ DEBUG_MERGING = False
 WIDTH = 12
 HEIGHT = 12
 RUN_COUNT = 100
+RUN_LENGTH = 30
+BAD_POINT_COUNT = 5
 
 def rectangles_contain_bad_point(rectangle_a, rectangle_b, world):
     for bad_point in world.bad_points:
@@ -110,7 +112,7 @@ best_world = None
 for run in range(RUN_COUNT):
     print("Executing run " + str(run + 1) + " out of " + str(RUN_COUNT))
     bad_points = []
-    for _ in range(10):
+    for _ in range(BAD_POINT_COUNT):
         bad_point = world.BadPoint(randint(0, WIDTH - 2) + 0.5, randint(0, HEIGHT - 2) + 0.5)
         while (bad_points_contains_point(bad_points, bad_point)):
             bad_point = world.BadPoint(randint(0, WIDTH - 2) + 0.5, randint(0, HEIGHT - 2) + 0.5)
@@ -119,7 +121,7 @@ for run in range(RUN_COUNT):
     example_world = world.World(WIDTH, HEIGHT, [], bad_points)
     example_world.add_rectangle_for_each_good_point()
 
-    for _ in range(len(example_world.rectangles) * 10):
+    for _ in range(len(example_world.rectangles) * RUN_LENGTH):
         rectangle_count = len(example_world.rectangles)
         chosen_rectangle_index = randint(0, rectangle_count - 1)
         rectangle_a = example_world.rectangles[randint(0, rectangle_count - 1)]
@@ -134,5 +136,7 @@ for run in range(RUN_COUNT):
     if (best_world == None or len(example_world.rectangles) < len(best_world.rectangles)):
         print("New best solution with " + str(len(example_world.rectangles)) + " rectangles!")
         best_world = example_world
+
+    print("Best solution has " + str(len(best_world.rectangles)) + " rectangles")
 
 best_world.render()
